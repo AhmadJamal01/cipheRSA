@@ -18,10 +18,26 @@ app.config["SECRET_KEY"] = "my secret key"
 def signup():
     data = request.get_json()
     print(data)
+    p = data['p']
+    q = data['q']
+    e = data['e']
     errorMsg = ""
-    p = int(data['p'])
-    q = int(data['q'])
-    e = int(data['e'])
+    if p != "":
+        p = int(data['p'])
+    else:
+        p= generatePrime(256)
+    if q != "":
+        q = int(data['q'])
+    else:
+        q = generatePrime(256)
+        while p==q:
+            q = generatePrime(256)
+    if e != "":
+        e = int(data['e'])
+    else:
+        e = random.randrange(1,(p-1)*(q-1))
+        while not testexponent(e,p,q):
+            e = random.randrange(1,(p-1)*(q-1))
     username = data['username']
     d= 0
     ptest=fermatPrimalityTest(p)
@@ -49,7 +65,7 @@ def signup():
             with open("ihab.json", "w") as outfile:
                 outfile.write(json_object)
             
-        
+    print(jsonify({'Error':errorMsg , 'privateKey':d , 'publicKey':e , 'n' : p*q}))
     return jsonify({'Error':errorMsg , 'privateKey':d , 'publicKey':e , 'n' : p*q})
 
 @app.route("/obtainpublic", methods=['GET'])
