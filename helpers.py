@@ -123,8 +123,9 @@ def use_decrypt(c, d ,p ,q):
     message = "".join(message)
     return message
 
-def convrt(inp):
-    lis = literal_eval(inp)
-    print(lis)
-
-convrt("[[80532, 46558], [77326, 46558]]")
+def generatePrime(n):
+    if n == 1: return -1
+    number = 1 
+    while not fermatPrimalityTest(number):
+        number = nBitRandom(n)
+    return number
