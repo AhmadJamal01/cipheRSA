@@ -11,10 +11,19 @@ client = socket.socket(
      socket.AF_INET, # IPv4 , AF_INET is the address family
      socket.SOCK_STREAM # SOCK_STREAM is the type of socket
      )
-print("[CONNECTING] to server...")
-client.connect(ADDR) # connect to the server
-# print the server info
-print(f'[CONNECTED] to {client.getsockname()}')
+
+def connectClient():
+    print("[CONNECTING] to server...")
+    client.connect(ADDR) # connect to the server
+    # print the server info
+    print(f'[CONNECTED] to {client.getsockname()}')
+    SENDING = True
+    while SENDING:
+        msg = input("Enter a message: ")
+        send(msg)
+        if msg == DISCONNECT_MESSAGE:
+            SENDING = False
+
 def send(msg):
     message = msg.encode(FORMAT)
     msg_length = len(message)
@@ -23,9 +32,4 @@ def send(msg):
     client.send(send_length)
     client.send(message)
 
-SENDING = True
-while SENDING:
-    msg = input("Enter a message: ")
-    send(msg)
-    if msg == DISCONNECT_MESSAGE:
-        SENDING = False
+

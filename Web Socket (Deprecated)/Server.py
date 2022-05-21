@@ -45,4 +45,3 @@ def start():
         thread.start() # start the thread
 
 
-start()
