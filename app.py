@@ -10,6 +10,8 @@ usersLogged = []
 # Instanciate a dict
 channelsMessages = dict()
 
+NUMOFBITS = 128
+
 app = Flask(__name__)
 socketio = SocketIO(app,cors_allowed_origins="*",async_mode='eventlet')
 app.config["SECRET_KEY"] = "my secret key"
@@ -25,13 +27,13 @@ def signup():
     if p != "":
         p = int(data['p'])
     else:
-        p= generatePrime(256)
+        p= generatePrime(NUMOFBITS )
     if q != "":
         q = int(data['q'])
     else:
-        q = generatePrime(256)
+        q = generatePrime(NUMOFBITS )
         while p==q:
-            q = generatePrime(256)
+            q = generatePrime(NUMOFBITS )
     if e != "":
         e = int(data['e'])
     else:
@@ -64,9 +66,8 @@ def signup():
         else:
             with open("ihab.json", "w") as outfile:
                 outfile.write(json_object)
-            
-    print(jsonify({'Error':errorMsg , 'privateKey':d , 'publicKey':e , 'n' : p*q}))
-    return jsonify({'Error':errorMsg , 'privateKey':d , 'publicKey':e , 'n' : p*q})
+    print("d" + str(d))
+    return jsonify({'Error':errorMsg , 'privateKey':str(d) , 'publicKey':str(e) , 'n' : str(p*q) , 'p' : str(p) , 'q' : str(q)})
 
 @app.route("/obtainpublic", methods=['GET'])
 def obtainpublic():
@@ -116,13 +117,7 @@ def decrypt():
     d = int(data["d"])
     p = int(data["p"])
     q = int(data["q"])
-    n = int(data["N"])
-    print(literal_eval(data["message"]))
-    print(d)
-    print(p)
-    print(q)
     m = use_decrypt(literal_eval(data["message"]),d,p,q)
-    print(m);
     return jsonify({'Error':"",'message':m})
 
 

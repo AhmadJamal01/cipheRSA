@@ -114,7 +114,7 @@ def fermatPrimalityTest(p):
 
 def testexponent(e, p, q):
     phi_n = (p - 1) * (q - 1)
-    if e > phi_n or e < 1:
+    if e >= phi_n or e <= 1:
         return False
     if GCD(e, phi_n) != 1:
         return False

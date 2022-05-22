@@ -98,7 +98,7 @@ class _ChatRoomState extends State<ChatRoom> {
                       },
                     );
                   } else {
-                    return Center(child: CircularProgressIndicator());
+                    return Center(child: Text("No Messages...Send any thing to trigger socket!",style: TextStyle(fontSize: 20,color: Colors.grey),));
                   }
                 },
               ),
@@ -132,6 +132,7 @@ class _ChatRoomState extends State<ChatRoom> {
                               headers: {"Content-Type": "application/json"},
                               body: jsonEncode(someMap))
                           .then((value) {
+                        msgcontent.clear();
                         socket.emit("ihabsevent");
 
                         socket.emit("jemysevent");
@@ -149,10 +150,10 @@ class _ChatRoomState extends State<ChatRoom> {
                             ];
                             if (info[0] != username) {
                               final Map<String, String> someMap2 = {
-                                'd': d.toString(),
-                                'N': N.toString(),
-                                'p': p.toString(),
-                                'q': q.toString(),
+                                'd': d,
+                                'N': N,
+                                'p': p,
+                                'q': q,
                                 'message': info[1],
                               };
                               var response = await http.post(
@@ -184,10 +185,10 @@ class _ChatRoomState extends State<ChatRoom> {
                             ];
                             if (info[0] != username) {
                               final Map<String, String> someMap2 = {
-                                'd': d.toString(),
-                                'N': N.toString(),
-                                'p': p.toString(),
-                                'q': q.toString(),
+                                'd': d,
+                                'N': N,
+                                'p': p,
+                                'q': q,
                                 'message': info[1],
                               };
                               var response = await http.post(
@@ -196,8 +197,9 @@ class _ChatRoomState extends State<ChatRoom> {
                                   body: jsonEncode(someMap2));
 
                               dynamic resp = json.decode(response.body);
+                              print("resp");
+                              print(resp);
                               info[1] = resp['message'];
-
                               messages.add(info);
                             } else {
                               messages.add(info);

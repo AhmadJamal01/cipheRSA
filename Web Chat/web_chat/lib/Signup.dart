@@ -166,7 +166,7 @@ class _SignUpState extends State<SignUp> {
                   SizedBox(
                     height: 20,
                   ),
-                  Text(errormsg , style: TextStyle(color: Colors.red),),
+                  Text(errormsg , style: TextStyle(color: Colors.red,fontWeight: FontWeight.w800),),
                   SizedBox(
                     height: 20,
                   ),
@@ -190,8 +190,8 @@ class _SignUpState extends State<SignUp> {
                           box.write("private_key", resp["privateKey"]);
                           box.write("username", username.text);
                           box.write("n", resp["n"]);
-                          box.write("p", pfield.text);
-                          box.write("q", qfield.text);
+                          box.write("p", resp["p"]);
+                          box.write("q", resp["q"]);
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => ChatRoom()),
