@@ -85,7 +85,7 @@ def divideMsg(msg, n):
 
 def encryptEncompass(msg, exponent, modulo):
     msg_blocks = divideMsg(msg, modulo)
-    cipher_blocks = [Encrypt(chunk, exponent, n) for chunk in msg_blocks]
+    cipher_blocks = [Encrypt(chunk, exponent, modulo) for chunk in msg_blocks]
     return cipher_blocks
 
 
