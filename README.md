@@ -25,6 +25,7 @@ Clone the repo and run app.py  ..  Now you have setup the backend, it is time fo
 - if you left one of fields empty .. don't worry we will generate it form you
 - Chat history is saved in text files from each user view ex. in ihab view he will see jemy's messages encrypted 
 - Users public keys are saved to json file
+- You can find Bruteforce attack and Chosen Cipher Attack implemented .. visit python notebooks file
 
 https://user-images.githubusercontent.com/57008633/169714030-6908df12-d382-4134-b5c9-c1370487b8a9.mp4
 
