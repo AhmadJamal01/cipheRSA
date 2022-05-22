@@ -35,7 +35,7 @@ https://user-images.githubusercontent.com/57008633/169714030-6908df12-d382-4134-
   <tr>
     <td align="center"><a href="https://github.com/ahmedihabb2"><img src="https://github.com/ahmedihabb2.png" width="100px;" alt=""/><br /><sub><b>Ahmed Ihab (Mango)</b></sub></a><br />
     </td>
-     <td align="center"><a href="https://github.com/AhmadJamal01"><img src="https://avatars.githubusercontent.com/56982963/169656661-7f7b42a9-45da-490c-8434-07336950dca4.jpg" width="100px;" alt=""/><br /><sub><b>Ahmed Jamal (CheeseCake)</b></sub></a><br />
+     <td align="center"><a href="https://github.com/AhmadJamal01"><img src="https://github.com/AhmadJamal01.png" width="100px;" alt=""/><br /><sub><b>Ahmed Jamal (CheeseCake)</b></sub></a><br />
     </td>
   </tr>
   </table>
